@@ -27,12 +27,13 @@ public class VegAdapter extends RecyclerView.Adapter<VegAdapter.VegRowHolder> {
 
         View view = LayoutInflater.from(context).inflate(R.layout.veg_row, parent,false);
         return new VegRowHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull VegRowHolder holder, int position) {
 
-        holder.txtVegName.setText(vegData.get(position).getImage());
+        holder.txtVegName.setText(vegData.get(position).getName());
         holder.imgVeg.setImageResource(vegData.get(position).getImage());
 
     }
