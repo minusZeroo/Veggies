@@ -1,5 +1,6 @@
 package com.jideani.veggies;
 
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements VegAdapter.MyClickInterface{
 
     RecyclerView recyclerView;
     ArrayList<Vegetable> veg;
@@ -30,13 +31,15 @@ public class MainActivity extends AppCompatActivity {
         veg.add(new Vegetable("Peas", R.drawable.peas));
         veg.add(new Vegetable("Tomato", R.drawable.tomato));
 
-        VegAdapter vegAdapter = new VegAdapter(veg, this);
+        VegAdapter vegAdapter = new VegAdapter(veg, this, this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         recyclerView.setAdapter(vegAdapter);
+    }
 
-
-
+    @Override
+    public void onItemClick(int positionOfTheVeg) {
+        Toast.makeText(this, "Clicked " + veg.get(positionOfTheVeg).getName(), Toast.LENGTH_SHORT).show();
     }
 }

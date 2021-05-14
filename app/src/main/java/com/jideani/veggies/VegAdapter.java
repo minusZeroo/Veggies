@@ -15,10 +15,12 @@ public class VegAdapter extends RecyclerView.Adapter<VegAdapter.VegRowHolder> {
 
     ArrayList<Vegetable> vegData;
     Context context;
+    MyClickInterface myClickInterface;
 
-    public VegAdapter(ArrayList<Vegetable> vegData, Context context){
+    public VegAdapter(ArrayList<Vegetable> vegData, Context context, MyClickInterface myClickInterface){
         this.context = context;
         this.vegData = vegData;
+        this.myClickInterface = myClickInterface;
     }
 
     @NonNull
@@ -52,6 +54,18 @@ public class VegAdapter extends RecyclerView.Adapter<VegAdapter.VegRowHolder> {
 
             txtVegName = itemView.findViewById(R.id.txt_veg_name);
             imgVeg = itemView.findViewById(R.id.img_veg);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myClickInterface.onItemClick(getAdapterPosition());
+                }
+            });
         }
+    }
+
+    interface MyClickInterface {
+
+        void onItemClick(int positionOfTheVeg);
     }
 }
