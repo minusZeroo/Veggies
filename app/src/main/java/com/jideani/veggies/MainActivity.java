@@ -1,5 +1,6 @@
 package com.jideani.veggies;
 
+import android.content.Intent;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,5 +42,8 @@ public class MainActivity extends AppCompatActivity implements VegAdapter.MyClic
     @Override
     public void onItemClick(int positionOfTheVeg) {
         Toast.makeText(this, "Clicked " + veg.get(positionOfTheVeg).getName(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, VegetableInfo.class);
+        intent.getIntExtra("image", veg.get(positionOfTheVeg).getImage());
+        intent.putExtra("name", veg.get(positionOfTheVeg).getName());
     }
 }

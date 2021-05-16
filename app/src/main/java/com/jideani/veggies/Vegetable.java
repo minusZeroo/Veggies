@@ -2,8 +2,8 @@ package com.jideani.veggies;
 
 public class Vegetable {
 
-    String name;
-    int image;
+    private String name;
+    private int image;
 
     public Vegetable(String name, int image){
         this.name = name;
