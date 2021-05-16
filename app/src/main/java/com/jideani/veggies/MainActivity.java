@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity implements VegAdapter.MyClic
     public void onItemClick(int positionOfTheVeg) {
         Toast.makeText(this, "Clicked " + veg.get(positionOfTheVeg).getName(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, VegetableInfo.class);
-        intent.getIntExtra("image", veg.get(positionOfTheVeg).getImage());
+        intent.putExtra("image", veg.get(positionOfTheVeg).getImage());
         intent.putExtra("name", veg.get(positionOfTheVeg).getName());
+        startActivity(intent);
     }
 }
